@@ -172,7 +172,7 @@ def main():
     useful_tweets_likes = show_likes(useful_tweets)
     useful_tweets_RT = show_RT(useful_tweets)
 
-    print("Total number of tweets about Arsenal: {} tweets\n".format(len(useful_tweets)))
+    print("Total number of tweets about these keywords: {} tweets\n".format(len(useful_tweets)))
 
     # We create a pandas dataframe as follows:
     data = pd.DataFrame(data=useful_tweets_text, columns=['Tweets'])
