@@ -137,7 +137,7 @@ def obtain_sources(data_table):
     for source in data_table['Source']:
         if source not in sources:
             sources.append(source)
-    print("Piers Morgan's tweet creation sources:")
+    print(f"@{SCREEN_NAME}'s tweet creation sources:")
     for source in sources:
         print("* {}".format(source))
 
@@ -149,7 +149,7 @@ def clean_tweet(tweet):
     """
     return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
 
-def analize_sentiment(tweet):
+def analyze_polarity(tweet):
     """
     Utility function to classify the polarity of a tweet
     using textblob.
@@ -161,6 +161,17 @@ def analize_sentiment(tweet):
         return 0
     else:
         return -1
+
+def analyze_subjectivity(tweet):
+    """
+    Utility function to classify the subjectivity of a tweet
+    using textblob.
+    '"""
+    analysis = TextBlob(clean_tweet(tweet))
+    if analysis.sentiment.subjectivity > 0:
+        return 1
+    else:
+        return 0
 
 def main():
     useful_tweets = process_tweets(tweet_list, KEYWORDS)
@@ -210,16 +221,17 @@ def main():
     obtain_sources(data)
     
     # We create a column with the result of the analysis:
-    data['SA'] = np.array([ analize_sentiment(tweet) for tweet in data['Tweets'] ])
+    data['Pol'] = np.array([ analyze_polarity(tweet) for tweet in data['Tweets'] ])
+    data['Sub'] = np.array([ analyze_subjectivity(tweet) for tweet in data['Tweets'] ])
 
     # We display the updated dataframe with the new column:
     print("\nLast 10 Tweets:")
     display(data.head(10))
 
     # We construct lists with classified tweets:
-    pos_tweets = [ tweet for index, tweet in enumerate(data['Tweets']) if data['SA'][index] > 0]
-    neu_tweets = [ tweet for index, tweet in enumerate(data['Tweets']) if data['SA'][index] == 0]
-    neg_tweets = [ tweet for index, tweet in enumerate(data['Tweets']) if data['SA'][index] < 0]
+    pos_tweets = [ tweet for index, tweet in enumerate(data['Tweets']) if data['Pol'][index] > 0]
+    neu_tweets = [ tweet for index, tweet in enumerate(data['Tweets']) if data['Pol'][index] == 0]
+    neg_tweets = [ tweet for index, tweet in enumerate(data['Tweets']) if data['Pol'][index] < 0]
 
     # We print percentages:
     print("\nPercentage of positive tweets: {0:.2f}%".format(float(len(pos_tweets)*100/len(data['Tweets']))))
@@ -247,3 +259,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print()
+    print("For your reference...")
+    print("Polarity is a float within the range [-1.0, 1.0], -1.0 being completely negative and 1.0 being completely positive.")
+    print("Subjectivity is a float within the range [0.0, 1.0] where 0.0 is very objective and 1.0 is very subjective.")
