@@ -2,7 +2,8 @@
 
   <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
-	<title>Sentiment Analysis</title>
+  <link rel="stylesheet" href="style.css" type="text/css"/>  
+  <title>Sentiment Analysis</title>
 
 	<style>
 	/* Your styles go here */
@@ -18,9 +19,10 @@
     <ul id="top"> 	
     <li><a href="homepage.htm">Home</a></li>
     <li class="dropdown">
-    <a href="overall.htm" class="dropbtn">Tourism</a>
-    <div class="dropdown-content">
-    <a href="individual.htm">Historical Places</a>    
+    <a href="overall.htm" class="dropbtn">Overall Sentiment</a>
+    <li class="dropdown">
+        <a href="individual.htm" class="dropbtn">Individual Sentiment</a>
+   
     </header>
 	<!-- Your HTML goes here -->
 <!--use <i> for italicizing word, <br> for break, <hr> for a line break, <h1> </h1> for header-->
@@ -33,8 +35,10 @@
     <input type="radio" name="gender" value="yes" id="y"> YES
     <input type="radio" name="gender" value="yes" id="y"> NO
 
+    <p id="p2"> What topic would you like to search as your second keyword?</p>
+    <input type="text" name="firstkeyword" maxlength="100" id="second"/> 
+
 
 </form>
-
   </body>
 </html>
