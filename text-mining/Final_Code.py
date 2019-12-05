@@ -42,7 +42,7 @@ def main():
 
         if str(user_response) in ['yes', 'no']:
             if user_response == 'no':
-                main(user_input, cleaned_tweets, analysis)
+                print_items(user_input, cleaned_tweets, analysis)
                 break
             else:
                 user_input2= input('What topic would you like to analyze as your second keyword? ')
