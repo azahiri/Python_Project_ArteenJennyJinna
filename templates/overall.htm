@@ -6,11 +6,21 @@
   <title>Sentiment Analysis</title>
 
 	<style>
-	/* Your styles go here */
+  /* Your styles go here */
+  div {display: none; }
 	</style>
-	
+  
+  <script src="http://code.jquery.com/jquery.min.js"></script> 
 	<script>
+      $(function (){
+         /* Jquery 2 */
+        $("#y").click(function(){
+        $("#section2").fadeIn("slow");
+        
+    })
+      });
 	/* Your JavaScript goes here */
+ 
 	</script>
   </head>
 
@@ -34,11 +44,11 @@
     <p> Would you like to search a second keyword? </p>
     <input type="radio" name="gender" value="yes" id="y"> YES
     <input type="radio" name="gender" value="yes" id="y"> NO
-
+  <div id="section2">
     <p id="p2"> What topic would you like to search as your second keyword?</p>
     <input type="text" name="firstkeyword" maxlength="100" id="second"/> 
 
-
+  </div>
 </form>
   </body>
 </html>
