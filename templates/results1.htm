@@ -37,22 +37,17 @@
 	<!-- Your HTML goes here -->
 <!--use <i> for italicizing word, <br> for break, <hr> for a line break, <h1> </h1> for header-->
 <h1> Sentiment Analysis </h1>
-<form method="POST" name="form1"> 
-    <p> What topic would you like to search?</p>
-    <input type="text" name="firstkeyword" maxlength="100" id="first"/>
+<p> 
+    The polarity and the subjectivity of the keyword {{firskeyword}} is below.
+    Polarity: {{polarity}}  Subjectivity: {{subjectivity}}
+    Based on the polarity, the overall sentiment of the keyword {{firskeyword}} is {{label1}}. 
 
-    <p> Would you like to search a second keyword? </p>
-    <input type="radio" name="gender" value="yes" id="yes"> YES
-    <input type="radio" name="gender" value="no" id="no"> NO
-  <div id="section2">
-    <p id="p2"> What topic would you like to search as your second keyword?</p>
-    <input type="text" name="secondkeyword" maxlength="100" id="second"/> 
+    The polarity and the subjectivity of the second keyword {{secondkeyword}} is below.
+    Polarity: {{polarity2}}  Subjectivity: {{subjectivity2}}
+    Based on the polarity, the overall sentiment of the second keyword {{subjectivity2}} is {{label2}}. 
 
-  </div>
-  <p> 
-  <input type="submit" value="Submit" name="Submit"  />
-  <input type="reset" value="Reset" name="Reset" />
+    <img src="{{barplot}}" alt="Bar Plot">   
+
 </p>
-</form>
   </body>
 </html>
