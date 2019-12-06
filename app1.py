@@ -11,10 +11,10 @@ import matplotlib.pyplot as plt
 image_folder = os.path.join('static', 'image')
 
 app1 = Flask(__name__)
-app.config['upload_folder'] = image_folder
+app1.config['upload_folder'] = image_folder
 
-@app.route("/", methods=["GET", "POST"])
-@app.route('/index')
+@app1.route("/", methods=["GET", "POST"])
+@app1.route('/index')
 
 def calculate():
     if request.method == "POST":
@@ -38,16 +38,16 @@ def calculate():
             label2 = get_label(analysis2, threshold=0)
             full_filename = os.path.join(app.config['upload_folder'], 'barplot.png')
             return render_template(
-                "results1.html", firstkeyword = user_input, polarity = polarity1, subjectivty = subjectivity1,
+                "results1.htm", firstkeyword = user_input, polarity = polarity1, subjectivty = subjectivity1,
                 analysis = analysis, label1= label1, secondkeyword = user_input2 , polarity2 = polarity2, subjectivty2 = subjectivity2,
                 label2 = label2, barplot = full_filename ) 
 
         else: 
             return render_template(
-                "results1.html", firstkeyword = user_input, polarity = polarity1, subjectivty = subjectivity1,
+                "results1.htm", firstkeyword = user_input, polarity = polarity1, subjectivty = subjectivity1,
                 analysis = analysis) 
 
-    return render_template("overall.html", error=None)
+    return render_template("overall.htm", error=None)
 
 if __name__ =='__main__':
     app1.run()

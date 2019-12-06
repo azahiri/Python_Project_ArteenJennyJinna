@@ -17,14 +17,16 @@ def remove_url(txt):
 
 
 #authenticate the keys 
-consumer_key = 'WWSMyFjVOJzjR5wtXizC1B0go'
-consumer_secret = 'w1DsVNTFc4v9fdtSItr3V8O2JVsleSHlvhdkhckoSit6AKP9XP'
-access_token = '1115278543863386112-aqOKS4yOFao6ZUe6PaQwWxYOJyk3gP' 
-acccess_token_secret = 'HKHbROYbNNxP50GsluZ1wf4h6GjAhSKh6j69GOWGFnilW' 
+def auth():
+    consumer_key = 'WWSMyFjVOJzjR5wtXizC1B0go'
+    consumer_secret = 'w1DsVNTFc4v9fdtSItr3V8O2JVsleSHlvhdkhckoSit6AKP9XP'
+    access_token = '1115278543863386112-aqOKS4yOFao6ZUe6PaQwWxYOJyk3gP' 
+    acccess_token_secret = 'HKHbROYbNNxP50GsluZ1wf4h6GjAhSKh6j69GOWGFnilW' 
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, acccess_token_secret)
-api = tweepy.API(auth)
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, acccess_token_secret)
+    api = tweepy.API(auth)
+    return api
 
 
 #Create second search
@@ -57,8 +59,8 @@ def main():
 
 
 # # Step 3 - Retrieve Tweets
-user_input = input('What topic would you like to analyze as your keyword? ')
-public_tweets = api.search(user_input, count = 1000)
+# user_input = input('What topic would you like to analyze as your keyword? ')
+# public_tweets = api.search(user_input, count = 1000)
 
 # search = input(str("What search term do you want to search? "))
 # public_tweets=api.search(search)
@@ -86,7 +88,7 @@ def create_dictionary(public_tweets):
 
 # print(create_dictionary(public_tweets))
 
-dictionary_tweets = create_dictionary(public_tweets)
+# dictionary_tweets = create_dictionary(public_tweets)
 
 
 
@@ -117,7 +119,7 @@ def clean_tweets(dictionary_tweets):
     # print(dictionary_tweets)
     return dictionary_tweets
 
-cleaned_tweets = clean_tweets(dictionary_tweets)
+# cleaned_tweets = clean_tweets(dictionary_tweets)
 
 # print(cleaned_tweets)
 # print({key:value for key, value in cleaned_tweets.items() if len(value) > 1}) 
@@ -148,8 +150,8 @@ def get_sentiment(cleaned_tweets):
     avg_subjectivity = total_subjectivity / num_tweets
     return avg_polarity, avg_subjectivity
 
-polarity1 = get_sentiment(cleaned_tweets)[0]
-subjectivity1= get_sentiment(cleaned_tweets)[1]
+# polarity1 = get_sentiment(cleaned_tweets)[0]
+# subjectivity1= get_sentiment(cleaned_tweets)[1]
 
 # print(f"Polarity: {get_sentiment(cleaned_tweets)[0]:.3f}", f"Subjectivity: {get_sentiment(cleaned_tweets)[1]:.3f}")
 # print(f"Polarity: {get_sentiment(cleaned_tweets2)[0]:.3f}", f"Subjectivity: {get_sentiment(cleaned_tweets2)[1]:.3f}")
@@ -171,7 +173,7 @@ def get_label(analysis, threshold=0): # threshold
     else:
         return 'Negative'
 
-analysis = get_sentiment(cleaned_tweets)
+# analysis = get_sentiment(cleaned_tweets)
 
 # print(get_label(analysis, threshold=0))
 
