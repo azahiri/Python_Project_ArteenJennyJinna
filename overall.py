@@ -209,7 +209,7 @@ def bar_plot(polarity1, subjectivity1, polarity2, subjectivity2, user_input1, us
     plt.legend()
 
     plt.tight_layout
-    plt.savefig('barplot.png')
+    plt.savefig('/static/image/barplot.png')
 
 # bar_plot(0.50, 0.70, 0.45, 0.85)
 

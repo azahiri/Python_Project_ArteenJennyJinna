@@ -31,7 +31,7 @@ def overall_sentiment_analysis():
         label1 = get_label(analysis, threshold=0)
 
         #creating a if statement in case the user wants to analyze another keyword
-        if  request.form['yes'] == "yes":
+        if  request.form['option'] == "yes":
             user_input2 = request.form["secondkeyword"]
             public_tweets2 = api.search(user_input2, count = 1000)
             dictionary_tweets2 = create_dictionary(public_tweets2)
@@ -47,9 +47,9 @@ def overall_sentiment_analysis():
                 label1= label1, secondkeyword = user_input2 , polarity2 = polarity2, subjectivity2 = subjectivity2,
                 label2 = label2, barplot = full_filename) 
 
-        elif request.form['no'] == "no": 
+        else: 
             return render_template(
-            "results1.htm", firstkeyword = user_input, polarity1 = polarity1, subjectivity1 = subjectivity1,
+            "results2.htm", firstkeyword = user_input, polarity1 = polarity1, subjectivity1 = subjectivity1,
             analysis = analysis, label1=label1) 
 
     return render_template("overall.htm", error=None)
