@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from overall import remove_url, create_dictionary, clean_tweets, get_sentiment, get_label, auth, bar_plot
 
 #setting the image folder for the barplot to be stored in 
-image_folder = os.path.join('static', 'image')
+image_folder = os.path.join('static', 'images')
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = image_folder

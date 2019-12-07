@@ -4,8 +4,11 @@ from textblob import TextBlob
 import datetime
 import re
 import numpy as np 
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+import os
 ##Functions to Validate and Clean 
+
+image_folder = os.path.join('static', 'images')
 
 # function to remove url! 
 def remove_url(txt):
@@ -209,7 +212,7 @@ def bar_plot(polarity1, subjectivity1, polarity2, subjectivity2, user_input1, us
     plt.legend()
 
     plt.tight_layout
-    plt.savefig('/static/image/barplot.png')
+    plt.savefig(os.path.join(image_folder, 'barplot.png'))
 
 # bar_plot(0.50, 0.70, 0.45, 0.85)
 
