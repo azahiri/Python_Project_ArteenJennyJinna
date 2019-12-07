@@ -17,14 +17,25 @@
   
   <script src="http://code.jquery.com/jquery.min.js"></script> 
 	<script>
-      $(function (){
-         /* Jquery 2 */
-        $("#y").click(function(){
-        $("#section2").fadeIn("slow");
-        
-    })
-      });
+
 	/* Your JavaScript goes here */
+  function validate()
+  {
+    if (document.getElementById("firstkeyword").value =="")
+        { alert ("KeyWord is Required!"); 
+          document.getElementById("firstkeyword").focus();}
+    else if (document.getElementById("yes").checked==true && document.getElementById("secondkeyword").value=="")
+        {
+          alert ("Second Keyword is Required!")
+          document.getElementById("secondkeyword").focus();
+        }
+    else 
+        {
+          return true;
+        }
+    return false;
+            
+  }
  
 	</script>
   </head>
@@ -44,7 +55,7 @@
 	<!-- Your HTML goes here -->
 <!--use <i> for italicizing word, <br> for break, <hr> for a line break, <h1> </h1> for header-->
 <h1> Sentiment Analysis </h1>
-<form method="POST" name="form1"> 
+<form method="POST" name="form1" onsubmit="return validate()"> 
     <p> What topic would you like to search?</p>
     <input type="text" name="firstkeyword" maxlength="100" id="first"/>
 
